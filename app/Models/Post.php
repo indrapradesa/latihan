@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
 class Post
 {
     // use HasFactory;
@@ -13,18 +10,21 @@ class Post
     //untuk di akses oleh class ini
     private static $blog = [
         [
-            "title" => "judul",
-            "slug" => "slug",
+            "title" => "Programing",
+            "slug" => "judul-post-programing",
+            "author" => "Yanto",
             "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum fugiat asperiores quos nihil debitis. Dolorum velit voluptatibus, ipsum ducimus excepturi repellendus quas vero. Consequatur dignissimos est ut eaque doloribus at."
         ],
         [
-            "title" => "judul",
-            "slug" => "slug",
-            "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum fugiat asperiores quos nihil debitis. Dolorum velit voluptatibus, ipsum ducimus excepturi repellendus quas vero. Consequatur dignissimos est ut eaque doloribus at."
+            "title" => "Network",
+            "slug" => "judul-post-network",
+            "author" => "Yanti",
+             "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum fugiat asperiores quos nihil debitis. Dolorum velit voluptatibus, ipsum ducimus excepturi repellendus quas vero. Consequatur dignissimos est ut eaque doloribus at."
         ],
         [
-            "title" => "judul",
-            "slug" => "slug",
+            "title" => "Lain-Lain",
+            "slug" => "judul-post-lain",
+            "author" => "Yantu",
             "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum fugiat asperiores quos nihil debitis. Dolorum velit voluptatibus, ipsum ducimus excepturi repellendus quas vero. Consequatur dignissimos est ut eaque doloribus at."
         ],
     ];
@@ -35,6 +35,15 @@ class Post
         //object orienta porpeti biasa
         // return $this->$blog;
         // popertis static
-        return self::$blog;
+
+        //colection = pembungkus dalam sebuah array
+        return collect(self::$blog);
+    }
+
+    public static function find($slug)
+    {
+        $post =  static::all();
+
+        return $post->firstWhere('slug', $slug);
     }
 }
