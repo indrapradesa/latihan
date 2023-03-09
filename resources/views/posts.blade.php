@@ -11,7 +11,7 @@
                 <a href="/blog/{{ $posts->slug }}">{{  $posts->title  }}</a>
             </h2>
 
-            <p class="mb-2 font-bold ">By. <a href="#" class="font-medium text-blue-800 dark:text-blue-600 hover:underline">{{ $posts->user->name }}</a> In <a href="/categories/{{ $posts->category->slug }}" class="font-medium text-blue-800 dark:text-blue-600 hover:underline">{{ $posts->category->name }}</a></p>
+            <p class="mb-2 font-bold ">By. <a href="/authors/{{ $posts->author->username }}" class="font-medium text-blue-800 dark:text-blue-600 hover:underline">{{ $posts->author->name }}</a> In <a href="/categories/{{ $posts->category->slug }}" class="font-medium text-blue-800 dark:text-blue-600 hover:underline">{{ $posts->category->name }}</a></p>
 
             <p class="font-bold text-justify text-lg capitalize text-gray-400 dark:text-gray-900">{{  $posts->excerpt  }}</p>
 
