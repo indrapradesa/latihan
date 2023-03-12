@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Models\Post;
-use App\Models\User;
+use App\Http\Controllers\DashboardPostController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -55,7 +53,12 @@ Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->na
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', function(){
+    return view('dashboard.index');
+    })->middleware('auth');
+
+Route::resource('/dashboard/posts', DashboardPostController::class)
+    ->middleware('auth');
 
 // sudah di tanggani oleh model yang ada di model post
 // Route::get('/categories/{category:slug}', function(Category $category) {
